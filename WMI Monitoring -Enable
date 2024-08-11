@@ -4,6 +4,8 @@ Wevtutil.exe sl Microsoft-Windows-WMI-Activity/Trace /e:true /q:true
 
 ###  Additional References ###
 
+Event Id:  5857, 5858, 5859, 5860, 5861, 5862, 5863, 5864, 5865, 5866, 5867, 5868
+
 5857: WMI Activity Operational Event
 5858: WMI Query Started
 5859: WMI Query Completed
