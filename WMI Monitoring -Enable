@@ -1,0 +1,50 @@
+# Enable WMI Monitoring
+
+Wevtutil.exe sl Microsoft-Windows-WMI-Activity/Trace /e:true /q:true
+
+=====================================================
+============    Additional References    ============
+-----------------------------------------------------
+
+# Two Queries Event Log for WMI Activity: 
+# Single Line:
+
+Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-WMI-Activity/Operational'; StartTime=(Get-Date "2024-08-11 01:00:00"); EndTime=(Get-Date "2024-08-11 23:59:00"); Id=5857, 5858, 5865} -MaxEvents 100 | Sort-Object TimeCreated -Descending | Select-Object TimeCreated, Id, LevelDisplayName, Message | Format-Table -AutoSize
+
+# OR Multiple Lines for ISE
+
+Get-WinEvent -FilterHashtable @{
+    LogName = 'Microsoft-Windows-WMI-Activity/Operational'
+    StartTime = (Get-Date "2024-08-11 01:00:00")
+    EndTime = (Get-Date "2024-08-11 23:59:00")
+    Id = 5857, 5858, 5865
+} -MaxEvents 100 | 
+Sort-Object TimeCreated -Descending | 
+Select-Object TimeCreated, Id, LevelDisplayName, Message | 
+Format-Table -AutoSize
+
+# WMI Event Logs are typically found in the Microsoft-Windows-WMI-Activity/Operational log.
+1. Event ID 5857
+Description: Indicates that a client has been authenticated. It logs information about the client, such as the user name and process ID.
+2. Event ID 5858
+Description: This event indicates that a WMI query has started. It logs details like the query text, namespace, and the client that initiated the query.
+3. Event ID 5859
+Description: Logs the completion of a WMI query. This event provides information about the duration of the query and the result.
+4. Event ID 5860
+Description: Indicates that a WMI query has been canceled. It provides details on why the query was canceled and by whom.
+5. Event ID 5861
+Description: This event logs WMI provider host process start and stop information. It includes details like the process ID and command line.
+6. Event ID 5862
+Description: Indicates that a WMI provider has been loaded. It logs the provider name, process ID, and other relevant details.
+7. Event ID 5863
+Description: Logs that a WMI provider has been unloaded. This event provides information about the provider and the process.
+8. Event ID 5864
+Description: Indicates that a WMI provider encountered an error. It provides details on the error and the provider involved.
+9. Event ID 5865
+Description: This event indicates that a WMI filter has been triggered. It logs details about the filter and the event that triggered it.
+10. Event ID 5866
+Description: Logs the execution of a WMI event consumer, providing details on the event and the action taken.
+11. Event ID 5867
+Description: Indicates a WMI query violation. This event logs information about unauthorized or suspicious WMI queries.
+12. Event ID 5868
+Description: Logs errors encountered during WMI operations, such as access violations or invalid query syntax.
