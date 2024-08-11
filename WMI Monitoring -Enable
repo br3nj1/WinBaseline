@@ -22,7 +22,7 @@ Event Id:  5857, 5858, 5859, 5860, 5861, 5862, 5863, 5864, 5865, 5866, 5867, 586
 # Event Log Queries 
 # Single Line:
 
-Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-WMI-Activity/Operational'; StartTime=(Get-Date "2024-08-11 01:00:00"); EndTime=(Get-Date "2024-08-11 23:59:00"); Id=5857, 5858, 5865} -MaxEvents 100 | Sort-Object TimeCreated -Descending | Select-Object TimeCreated, Id, LevelDisplayName, Message | Format-Table -AutoSize
+Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-WMI-Activity/Operational'; StartTime=(Get-Date "2024-08-11 01:00:00"); EndTime=(Get-Date "2024-08-11 23:59:00"); Id=5857, 5858, 5859, 5860, 5861, 5862, 5863, 5864, 5865, 5866, 5867, 5868} -MaxEvents 100 | Sort-Object TimeCreated -Descending | Select-Object TimeCreated, Id, LevelDisplayName, Message | Format-Table -AutoSize
 
 # Multiple Lines for ISE
 
@@ -30,7 +30,7 @@ Get-WinEvent -FilterHashtable @{
     LogName = 'Microsoft-Windows-WMI-Activity/Operational'
     StartTime = (Get-Date "2024-08-11 01:00:00")
     EndTime = (Get-Date "2024-08-11 23:59:00")
-    Id = 5857, 5858, 5865
+    Id = 5857, 5858, 5859, 5860, 5861, 5862, 5863, 5864, 5865, 5866, 5867, 5868
 } -MaxEvents 100 | 
 Sort-Object TimeCreated -Descending | 
 Select-Object TimeCreated, Id, LevelDisplayName, Message | 
